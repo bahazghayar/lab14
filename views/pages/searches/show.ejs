@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <header>
+    <a href="/">Home</a> <br>
+    <a href="/new">Search the google books API</a>
+  </header>
+
+  <main>
+    <% bookDivs.forEach(val=> { %>
+      <div> <img src="<%=val.image %>" alt=""> <br>
+        <h2>
+          <%= val.title %>
+        </h2> <br>
+        <h3>
+          <%=val.author%>
+        </h3> <br>
+        <h3>
+          <%- val.description%>
+        </h3>
+
+        <form action='/books' method="POST" type="hidden">
+
+          <input type="hidden" name="title" value="<%= val.title %> ">
+          <input type="hidden" name="author" value="<%= val.author %> ">
+          <input type="hidden" name="image" value="<%= val.image %> ">
+          <input type="hidden" name="description" value="<%= val.description %> ">
+          <input type="hidden" name="isbn" value="<%= val.isbn  %> ">
+          <input type="hidden" name="bookShelf" value="<%= val.bookShelf  %> ">
+
+          <input type="submit" value="Select this Book">
+        </form>
+      </div>
+
+      <% }); %>
+
+
+
+
+  </main>
+
+
+
+
+</body>
+
+</html>
